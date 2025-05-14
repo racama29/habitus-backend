@@ -23,4 +23,20 @@ public class HabitUpdate {
 
     // Getters and setters
     public HabitUpdate() {}
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public Habit getHabit() { return habit; }
+    public void setHabit(Habit habit) { this.habit = habit; }
+
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
+
+    public LocalDate getFecha() { return fecha; }
+    public void setFecha(LocalDate fecha) { this.fecha = fecha; }
+
+    public boolean getCompletado() { return completado; }
+    public void setCompletado(boolean completado) { this.completado = completado; }
+
 }

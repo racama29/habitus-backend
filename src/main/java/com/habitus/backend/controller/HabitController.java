@@ -1,38 +1,49 @@
 package com.habitus.backend.controller;
 
 import com.habitus.backend.model.Habit;
-import com.habitus.backend.model.HabitUser;
+import com.habitus.backend.model.User;
 import com.habitus.backend.service.HabitService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.habitus.backend.service.UserService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/habits")
-@CrossOrigin(origins = "*") // Configura bien esto más adelante
 public class HabitController {
 
-    @Autowired
-    private HabitService habitService;
+    private final HabitService habitService;
+    private final UserService userService;
 
-    @PostMapping("/{userId}")
-    public Habit createHabit(@PathVariable String userId, @RequestBody Habit habit) {
-        return habitService.createHabit(userId, habit);
+    public HabitController(HabitService habitService, UserService userService) {
+        this.habitService = habitService;
+        this.userService = userService;
     }
 
     @GetMapping("/user/{userId}")
-    public List<HabitUser> getHabitsByUser(@PathVariable String userId) {
-        return habitService.getHabitsByUser(userId);
+    public ResponseEntity<List<Habit>> getHabitsByUserId(@PathVariable Long userId) {
+        List<Habit> habits = habitService.getHabitsByUserId(userId);
+        return ResponseEntity.ok(habits);
     }
 
-    @GetMapping("/{id}")
-    public Habit getHabit(@PathVariable Long id) {
-        return habitService.getHabitById(id).orElse(null);
+    @PostMapping("/user/{userId}")
+    public ResponseEntity<Habit> createHabit(@PathVariable Long userId, @RequestBody Habit habit) {
+        User user = userService.getUserById(userId);
+        habit.setUser(user);
+        Habit savedHabit = habitService.saveHabit(habit);
+        return ResponseEntity.ok(savedHabit);
     }
 
-    @GetMapping
-    public List<Habit> getAllHabits() {
-        return habitService.getAllHabits();
+    @DeleteMapping("/{habitId}")
+    public ResponseEntity<Void> deleteHabit(@PathVariable Long habitId) {
+        habitService.deleteHabit(habitId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{habitId}")
+    public ResponseEntity<Habit> updateHabit(@PathVariable Long habitId, @RequestBody Habit habit) {
+        Habit updated = habitService.updateHabit(habitId, habit);
+        return ResponseEntity.ok(updated);
     }
 }

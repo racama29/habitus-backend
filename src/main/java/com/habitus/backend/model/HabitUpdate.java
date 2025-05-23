@@ -1,7 +1,7 @@
 package com.habitus.backend.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "habit_updates")
@@ -9,34 +9,50 @@ public class HabitUpdate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "update_id")
+    private Long updateId;
 
     @ManyToOne
+    @JoinColumn(name = "habit_id", nullable = false)
     private Habit habit;
 
-    @ManyToOne
-    private User user;
+    @Column(nullable = false)
+    private String estado;
 
-    private LocalDate fecha;
+    @Column(name = "fecha_actualizacion", nullable = false)
+    private LocalDateTime fechaActualizacion;
 
-    private boolean completado;
-
-    // Getters and setters
     public HabitUpdate() {}
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getUpdateId() {
+        return updateId;
+    }
 
-    public Habit getHabit() { return habit; }
-    public void setHabit(Habit habit) { this.habit = habit; }
+    public void setUpdateId(Long updateId) {
+        this.updateId = updateId;
+    }
 
-    public User getUser() { return user; }
-    public void setUser(User user) { this.user = user; }
+    public Habit getHabit() {
+        return habit;
+    }
 
-    public LocalDate getFecha() { return fecha; }
-    public void setFecha(LocalDate fecha) { this.fecha = fecha; }
+    public void setHabit(Habit habit) {
+        this.habit = habit;
+    }
 
-    public boolean getCompletado() { return completado; }
-    public void setCompletado(boolean completado) { this.completado = completado; }
+    public String getEstado() {
+        return estado;
+    }
 
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public LocalDateTime getFechaActualizacion() {
+        return fechaActualizacion;
+    }
+
+    public void setFechaActualizacion(LocalDateTime fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
+    }
 }

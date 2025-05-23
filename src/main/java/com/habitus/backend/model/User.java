@@ -8,35 +8,52 @@ import java.util.List;
 public class User {
 
     @Id
-    private String id; // UID de Firebase
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    private Long userId;
+
+    @Column(nullable = false, unique = true)
+    private String email;
 
     private String nombre;
-    private String apellido;
-    private String email;
-    private String telefono;
 
-    @OneToMany(mappedBy = "user")
-    private List<HabitUser> habitLinks;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Habit> habits;
 
-    @OneToMany(mappedBy = "user")
-    private List<HabitUpdate> updates;
-
-    // Getters and setters
+    // Constructor vacío
     public User() {}
 
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
+    // Getters y Setters
 
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public Long getUserId() {
+        return userId;
+    }
 
-    public String getApellido() { return apellido; }
-    public void setApellido(String apellido) { this.apellido = apellido; }
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
+    public String getEmail() {
+        return email;
+    }
 
-    public String getTelefono() { return telefono; }
-    public void setTelefono(String telefono) { this.telefono = telefono; }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public List<Habit> getHabits() {
+        return habits;
+    }
+
+    public void setHabits(List<Habit> habits) {
+        this.habits = habits;
+    }
 }

@@ -1,53 +1,49 @@
 package com.habitus.backend.service;
 
 import com.habitus.backend.model.Habit;
-import com.habitus.backend.model.HabitUser;
 import com.habitus.backend.model.User;
 import com.habitus.backend.repository.HabitRepository;
-import com.habitus.backend.repository.HabitUserRepository;
 import com.habitus.backend.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class HabitService {
 
-    @Autowired
-    private HabitRepository habitRepository;
+    private final HabitRepository habitRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private HabitUserRepository habitUserRepository;
-
-    public Habit createHabit(String userId, Habit habit) {
-        Habit savedHabit = habitRepository.save(habit);
-
-        Optional<User> userOpt = userRepository.findById(userId);
-        if (userOpt.isPresent()) {
-            HabitUser link = new HabitUser();
-            link.setUser(userOpt.get());
-            link.setHabit(savedHabit);
-            link.setRol("owner");
-            habitUserRepository.save(link);
-        }
-
-        return savedHabit;
+    public HabitService(HabitRepository habitRepository, UserRepository userRepository) {
+        this.habitRepository = habitRepository;
+        this.userRepository = userRepository;
     }
 
-    public List<HabitUser> getHabitsByUser(String userId) {
-        return habitUserRepository.findByUserId(userId);
+    public Habit saveHabit(Habit habit) {
+        return habitRepository.save(habit);
     }
 
-    public Optional<Habit> getHabitById(Long id) {
-        return habitRepository.findById(id);
+    public List<Habit> getHabitsByUserId(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado con ID: " + userId));
+        return habitRepository.findByUser(user);
     }
 
-    public List<Habit> getAllHabits() {
-        return habitRepository.findAll();
+    public void deleteHabit(Long habitId) {
+        habitRepository.deleteById(habitId);
+    }
+
+    public Habit updateHabit(Long habitId, Habit updatedHabit) {
+        Habit existingHabit = habitRepository.findById(habitId)
+                .orElseThrow(() -> new RuntimeException("Hábito no encontrado con ID: " + habitId));
+
+        existingHabit.setTitulo(updatedHabit.getTitulo());
+        existingHabit.setObjetivo(updatedHabit.getObjetivo());
+        existingHabit.setFrecuencia(updatedHabit.getFrecuencia());
+        existingHabit.setColor(updatedHabit.getColor());
+        existingHabit.setEstado(updatedHabit.getEstado());
+        existingHabit.setFechaFin(updatedHabit.getFechaFin());
+
+        return habitRepository.save(existingHabit);
     }
 }

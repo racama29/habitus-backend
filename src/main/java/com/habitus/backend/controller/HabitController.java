@@ -1,7 +1,9 @@
 package com.habitus.backend.controller;
 
 import com.habitus.backend.model.Habit;
+import com.habitus.backend.model.HabitUpdate;
 import com.habitus.backend.model.User;
+import com.habitus.backend.repository.HabitUpdateRepository;
 import com.habitus.backend.service.HabitService;
 import com.habitus.backend.service.UserService;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +17,12 @@ public class HabitController {
 
     private final HabitService habitService;
     private final UserService userService;
+    private final HabitUpdateRepository habitUpdateRepository;
 
-    public HabitController(HabitService habitService, UserService userService) {
+    public HabitController(HabitService habitService, UserService userService, HabitUpdateRepository habitUpdateRepository) {
         this.habitService = habitService;
         this.userService = userService;
+        this.habitUpdateRepository = habitUpdateRepository;
     }
 
     @GetMapping("/user/{userId}")
@@ -45,5 +49,11 @@ public class HabitController {
     public ResponseEntity<Habit> updateHabit(@PathVariable Long habitId, @RequestBody Habit habit) {
         Habit updated = habitService.updateHabit(habitId, habit);
         return ResponseEntity.ok(updated);
+    }
+
+    @GetMapping("/{habitId}/history")
+    public ResponseEntity<List<HabitUpdate>> getHabitHistory(@PathVariable Long habitId) {
+        List<HabitUpdate> history = habitUpdateRepository.findByHabit_IdOrderByFechaActualizacionDesc(habitId);
+        return ResponseEntity.ok(history);
     }
 }

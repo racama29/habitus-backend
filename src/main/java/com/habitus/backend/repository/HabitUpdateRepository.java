@@ -21,5 +21,6 @@ public interface HabitUpdateRepository extends JpaRepository<HabitUpdate, Long> 
 
     List<HabitUpdate> findByHabitIdOrderByFechaActualizacionDesc(Long habitId);
 
+    List<HabitUpdate> findByHabit_IdOrderByFechaActualizacionDesc(Long habitId);
 
 }

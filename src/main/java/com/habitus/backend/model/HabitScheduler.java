@@ -53,12 +53,13 @@ public class HabitScheduler {
 
                 if (yaRegistrado) continue;
 
-                HabitUpdate update = new HabitUpdate();
-                update.setHabit(habit);
-                update.setEstado(habit.getEstado());
-                update.setFechaActualizacion(LocalDateTime.now().minusDays(1));
-                updatesToSave.add(update);
-
+                if (!"pending".equals(habit.getEstado())) {
+                    HabitUpdate update = new HabitUpdate();
+                    update.setHabit(habit);
+                    update.setEstado(habit.getEstado());
+                    update.setFechaActualizacion(LocalDateTime.now());
+                    updatesToSave.add(update);
+                }
                 habit.setEstado("pending");
                 habitsToReset.add(habit);
             }

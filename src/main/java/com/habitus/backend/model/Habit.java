@@ -37,9 +37,11 @@ public class Habit {
     private LocalDate fechaFin; // Puede ser null si es indefinido
 
     @OneToMany(mappedBy = "habit")
+    @JsonIgnore
     private List<HabitUser> usuarios;
 
-    @OneToMany(mappedBy = "habit")
+    @OneToMany(mappedBy = "habit", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<HabitUpdate> updates;
 
     // Constructor vacío

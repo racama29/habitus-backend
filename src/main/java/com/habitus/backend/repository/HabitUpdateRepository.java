@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Repository
 public interface HabitUpdateRepository extends JpaRepository<HabitUpdate, Long> {
@@ -15,4 +16,10 @@ public interface HabitUpdateRepository extends JpaRepository<HabitUpdate, Long> 
             LocalDateTime start,
             LocalDateTime end
     );
+
+    List<HabitUpdate> findByHabitOrderByFechaActualizacionDesc(Habit habit);
+
+    List<HabitUpdate> findByHabitIdOrderByFechaActualizacionDesc(Long habitId);
+
+
 }

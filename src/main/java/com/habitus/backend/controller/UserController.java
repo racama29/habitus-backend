@@ -1,6 +1,8 @@
 package com.habitus.backend.controller;
 
+import com.habitus.backend.DTO.HabitMetricsDTO;
 import com.habitus.backend.model.User;
+import com.habitus.backend.service.HabitService;
 import com.habitus.backend.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,9 +12,11 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final UserService userService;
+    private final HabitService habitService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, HabitService habitService) {
         this.userService = userService;
+        this.habitService = habitService;
     }
 
     @PostMapping("/register")
@@ -32,4 +36,12 @@ public class UserController {
         User user = userService.getUserByEmail(email);
         return ResponseEntity.ok(user);
     }
+
+    @GetMapping("/{userId}/metrics")
+    public ResponseEntity<HabitMetricsDTO> getUserMetrics(@PathVariable Long userId) {
+        HabitMetricsDTO metrics = habitService.calculateMetricsForUser(userId);
+        return ResponseEntity.ok(metrics);
+    }
+
+
 }

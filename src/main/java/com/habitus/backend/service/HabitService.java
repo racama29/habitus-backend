@@ -1,5 +1,6 @@
 package com.habitus.backend.service;
 
+import com.habitus.backend.DTO.HabitMetricsDTO;
 import com.habitus.backend.model.Habit;
 import com.habitus.backend.model.User;
 import com.habitus.backend.repository.HabitRepository;
@@ -46,4 +47,17 @@ public class HabitService {
 
         return habitRepository.save(existingHabit);
     }
+
+    public HabitMetricsDTO calculateMetricsForUser(Long userId) {
+        List<Habit> habits = habitRepository.findByUser_UserId(userId);
+        int total = habits.size();
+        int completed = (int) habits.stream().filter(h -> "completed".equals(h.getEstado())).count();
+        int inProgress = (int) habits.stream().filter(h -> "in_progress".equals(h.getEstado())).count();
+        int failed = (int) habits.stream().filter(h -> "pending".equals(h.getEstado())).count();
+        double rate = total > 0 ? (double) completed / total : 0.0;
+
+        return new HabitMetricsDTO(userId, total, completed, inProgress, failed, rate);
+    }
+
+
 }

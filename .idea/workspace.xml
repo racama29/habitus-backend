@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="93d4a315-230e-4563-9ef4-a4174361b7d6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habitus/backend/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habitus/backend/config/WebConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +89,7 @@
       <workItem from="1746178999783" duration="86000" />
       <workItem from="1746180131693" duration="55862000" />
       <workItem from="1747666721074" duration="23970000" />
-      <workItem from="1748269153111" duration="6902000" />
+      <workItem from="1748269153111" duration="8012000" />
     </task>
     <servers />
   </component>

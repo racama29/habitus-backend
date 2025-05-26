@@ -1,10 +1,14 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-# Editor-based HTTP Client requests
-/httpRequests/
-# Datasource local storage ignored files
-/dataSources/
-/dataSources.local.xml
-
+# Archivos sensibles
 .env
+
+# Archivos de compilación
+target/
+
+# Maven Wrapper innecesarios si usas Docker multietapa
+.mvn/
+mvnw
+mvnw.cmd
+
+# Archivos del IDE (opcional si usas IntelliJ)
+.idea/
+*.iml

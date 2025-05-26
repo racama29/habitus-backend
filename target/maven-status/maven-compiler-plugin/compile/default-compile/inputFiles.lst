@@ -1,0 +1,17 @@
+/Users/rafael/Desktop/habitus/back/src/main/java/com/habitus/backend/DTO/HabitMetricsDTO.java
+/Users/rafael/Desktop/habitus/back/src/main/java/com/habitus/backend/HabitusBackendApplication.java
+/Users/rafael/Desktop/habitus/back/src/main/java/com/habitus/backend/config/WebConfig.java
+/Users/rafael/Desktop/habitus/back/src/main/java/com/habitus/backend/controller/HabitController.java
+/Users/rafael/Desktop/habitus/back/src/main/java/com/habitus/backend/controller/UserController.java
+/Users/rafael/Desktop/habitus/back/src/main/java/com/habitus/backend/model/Frecuency.java
+/Users/rafael/Desktop/habitus/back/src/main/java/com/habitus/backend/model/Habit.java
+/Users/rafael/Desktop/habitus/back/src/main/java/com/habitus/backend/model/HabitScheduler.java
+/Users/rafael/Desktop/habitus/back/src/main/java/com/habitus/backend/model/HabitUpdate.java
+/Users/rafael/Desktop/habitus/back/src/main/java/com/habitus/backend/model/HabitUser.java
+/Users/rafael/Desktop/habitus/back/src/main/java/com/habitus/backend/model/User.java
+/Users/rafael/Desktop/habitus/back/src/main/java/com/habitus/backend/repository/HabitRepository.java
+/Users/rafael/Desktop/habitus/back/src/main/java/com/habitus/backend/repository/HabitUpdateRepository.java
+/Users/rafael/Desktop/habitus/back/src/main/java/com/habitus/backend/repository/HabitUserRepository.java
+/Users/rafael/Desktop/habitus/back/src/main/java/com/habitus/backend/repository/UserRepository.java
+/Users/rafael/Desktop/habitus/back/src/main/java/com/habitus/backend/service/HabitService.java
+/Users/rafael/Desktop/habitus/back/src/main/java/com/habitus/backend/service/UserService.java

@@ -44,7 +44,6 @@ public class Habit {
     @JsonIgnore
     private List<HabitUpdate> updates;
 
-    // Constructor vacío
     public Habit() {}
 
     // Getters y setters

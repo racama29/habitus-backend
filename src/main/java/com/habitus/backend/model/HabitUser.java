@@ -21,15 +21,6 @@ public class HabitUser {
 
     public HabitUser() {}
 
-    // Getters y Setters
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public User getUser() {
         return user;
@@ -39,11 +30,4 @@ public class HabitUser {
         this.user = user;
     }
 
-    public Habit getHabit() {
-        return habit;
-    }
-
-    public void setHabit(Habit habit) {
-        this.habit = habit;
-    }
 }

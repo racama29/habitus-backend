@@ -1,0 +1,162 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > HabitUpdate</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.habitus.backend.model</a>
+</div>
+
+<h1>Coverage Summary for Class: HabitUpdate (com.habitus.backend.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">HabitUpdate</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (9/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (9/9)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.habitus.backend.model;
+&nbsp;
+&nbsp;import jakarta.persistence.*;
+&nbsp;import java.time.LocalDateTime;
+&nbsp;
+&nbsp;@Entity
+&nbsp;@Table(name = &quot;habit_updates&quot;)
+&nbsp;public class HabitUpdate {
+&nbsp;
+&nbsp;    @Id
+&nbsp;    @GeneratedValue(strategy = GenerationType.IDENTITY)
+&nbsp;    @Column(name = &quot;update_id&quot;)
+&nbsp;    private Long updateId;
+&nbsp;
+&nbsp;    @ManyToOne
+&nbsp;    @JoinColumn(name = &quot;habit_id&quot;, nullable = false)
+&nbsp;    private Habit habit;
+&nbsp;
+&nbsp;    @Column(nullable = false)
+&nbsp;    private String estado;
+&nbsp;
+&nbsp;    @Column(name = &quot;fecha_actualizacion&quot;, nullable = false)
+&nbsp;    private LocalDateTime fechaActualizacion;
+&nbsp;
+<b class="fc">&nbsp;    public HabitUpdate() {}</b>
+&nbsp;
+&nbsp;    public Long getUpdateId() {
+<b class="fc">&nbsp;        return updateId;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setUpdateId(Long updateId) {
+<b class="fc">&nbsp;        this.updateId = updateId;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Habit getHabit() {
+<b class="fc">&nbsp;        return habit;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setHabit(Habit habit) {
+<b class="fc">&nbsp;        this.habit = habit;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getEstado() {
+<b class="fc">&nbsp;        return estado;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setEstado(String estado) {
+<b class="fc">&nbsp;        this.estado = estado;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public LocalDateTime getFechaActualizacion() {
+<b class="fc">&nbsp;        return fechaActualizacion;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setFechaActualizacion(LocalDateTime fechaActualizacion) {
+<b class="fc">&nbsp;        this.fechaActualizacion = fechaActualizacion;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-06-01 14:17</div>
+</div>
+</body>
+</html>

@@ -35,13 +35,17 @@ public class User {
         return email;
     }
 
-    public void setEmail(String email) {}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
     public List<Habit> getHabits() {
         return habits;

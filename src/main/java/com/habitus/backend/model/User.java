@@ -23,7 +23,6 @@ public class User {
     // Constructor vacío
     public User() {}
 
-
     public Long getUserId() {
         return userId;
     }
@@ -32,4 +31,23 @@ public class User {
         this.userId = userId;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {}
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {}
+
+    public List<Habit> getHabits() {
+        return habits;
+    }
+
+    public void setHabits(List<Habit> habits) {
+        this.habits = habits;
+    }
 }

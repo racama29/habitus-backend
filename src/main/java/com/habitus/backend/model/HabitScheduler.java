@@ -24,7 +24,7 @@ public class HabitScheduler {
     }
 
     // Ejecutar cada día a las 00:00
-    @Scheduled(cron = "0 0 0 * * *")
+    @Scheduled(cron = "0 * * * * *")
     @Transactional
     public void processHabits() {
         List<Habit> allHabits = habitRepository.findAll();
